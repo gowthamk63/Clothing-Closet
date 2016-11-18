@@ -1,13 +1,30 @@
-<?php
+ <?php
+
+ session_start();
+ if( isset($_SESSION['user'])!="" ){
+   echo "string";
+  header("Location: home.php");
+ }
+ //header("Location: home.php")
+
   require 'connect.php';
 
-  $tbl_name="user"; // Table name
+  $tbl_name="person"; // Table name
 
   //user details
-  $username=$_POST['username'];
+  $name=$_POST['name'];
   $password=$_POST['password'];
+  $email=$_POST['email'];
+  $address=$_POST['address'];
+  $city=$_POST['city'];
+  $state=$_POST['state'];
+  $zip=$_POST['zip'];
+  $phone=$_POST['phone'];
 
-  $sql="INSERT INTO $tbl_name(UserName, password) VALUES ('$username','$password');";// Insert into database
+  $sql="INSERT INTO $tbl_name(name, password, email, address, city, state, zip) VALUES ('$name', '$password', '$email', '$address', '$city', '$state', '$zip');";// Insert into database
 
   $con->query($sql);
+  if ($con) {
+    header("Location: index.php");
+  }
  ?>

@@ -2,27 +2,28 @@
 if ( isset($_POST['btn-login']) ) {
     require 'connect.php';
 
-    $tbl_name="user"; // Table name
+    $tbl_name="person"; // Table name
 
-    // username and password sent from form
-    $username=$_POST['email'];
+    //  and password sent from form
+    $email=$_POST['email'];
     $password=$_POST['password'];
 
     // To protect MySQL injection (more detail about MySQL injection)
-    //$username = stripslashes($username);
+    //$email = stripslashes($email);
     //$password = stripslashes($password);
-    //$username = mysqli_real_escape_string($username);
+    //$email = mysqli_real_escape_string($email);
     //$password = mysqli_real_escape_string($password);
-    $sql="SELECT sno,UserName,password FROM $tbl_name WHERE UserName='$username' and password='$password';";
+
+    $sql="SELECT id,email,password FROM $tbl_name WHERE email='$email' and password='$password';";
     $result=$con->query($sql);
-    // Mysql_num_row is counting table row
+    // counting table rows
     $count=$result->num_rows;
     $row = $result->fetch_array();
 
-    // If result matched $username and $password, table row must be 1 row
+    // If result matched $email and $password, table row must be 1 row
     if($count == 1 && $row['password']==$password){
         session_start();
-        $_SESSION['user'] = $row["sno"];
+        $_SESSION['user'] = $row["id"];
         header("Location: home.php");
     }
     else {

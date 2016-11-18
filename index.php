@@ -32,13 +32,15 @@ require 'login.php';
 
     <input type="submit" name="btn-login" value="Sign In" class="btn">
 
-    <a href="signup.html"><div id="btn2">Sign Up</div></a> <!-- End Btn2 -->
+    <a href="register.php"><div id="btn2">Sign Up</div></a> <!-- End Btn2 -->
 
   </div> <!-- End Box -->
 
 </form>
 
 <p>Forgot your password? <u style="color:#f1c40f;">Click Here!</u></p>
+<?php
+include 'footer.php';?>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
 <script src="js/index.js"></script>
