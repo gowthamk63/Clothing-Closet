@@ -18,22 +18,16 @@ require 'login.php';
 
 <body>
 
-<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
   <div class="box">
     <h1>Login</h1>
 
     <input type="email" name="email" placeholder="email" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" />
 
     <input type="password" name="password" placeholder="password" onFocus="field_focus(this, 'password');" onblur="field_blur(this, 'email');" class="email" /><br>
-
-    <input type="radio" name="admin" value="admin" />Admin
-    <input type="radio" name="admin" value="user" checked/>Donator
-    <input type="radio" name="admin" value="buyer"/> Buyer<br>
-
     <input type="submit" name="btn-login" value="Sign In" class="btn">
 
     <a href="register.php"><div id="btn2">Sign Up</div></a> <!-- End Btn2 -->
-
   </div> <!-- End Box -->
 
 </form>

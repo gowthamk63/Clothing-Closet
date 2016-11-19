@@ -5,8 +5,8 @@
    echo "string";
   header("Location: home.php");
  }
- //header("Location: home.php")
 
+if ( isset($_POST['btn-login']) ) {
   require 'connect.php';
 
   $tbl_name="person"; // Table name
@@ -27,4 +27,5 @@
   if ($con) {
     header("Location: index.php");
   }
+}
  ?>

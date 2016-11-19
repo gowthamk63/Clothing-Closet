@@ -1,3 +1,7 @@
+<?php
+include 'signup.php'; ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +49,7 @@
 	 		<input type="radio" name="admin" value="buyer"/> Buyer
 	 		<label for="admin" style="color:red">*</label><br><br>
 
-			<input class="signup" type="submit" value="Sign Up" id="submit">
+			<input class="signup" type="submit" value="Sign Up" name="btn-signup" id="submit">
 
 		</div>
 	</form>
