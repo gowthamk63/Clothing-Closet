@@ -27,8 +27,11 @@ require 'login.php';
     <input type="password" name="password" placeholder="password" onFocus="field_focus(this, 'password');" onblur="field_blur(this, 'email');" class="email" /><br>
     <input type="submit" name="btn-login" value="Sign In" class="btn">
 
-    <a href="register.php"><div id="btn2">Sign Up</div></a> <!-- End Btn2 -->
+    <a href="register.php"><input type="button" id="btn2" value="Sign Up"></a> <!-- End Btn2 -->
   </div> <!-- End Box -->
+
+  <a href="https://www.facebook.com">asdasd</a>
+
 
 </form>
 

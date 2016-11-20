@@ -1,11 +1,10 @@
  <?php
-
  session_start();
  if( isset($_SESSION['user'])!="" ){
-   echo "string";
   header("Location: home.php");
  }
-if ( isset($_POST['btn-login']) ) {
+
+if ( isset($_POST['btn-signup']) ) {
   require 'util/connect.php';
 
   $tbl_name="person"; // Table name
@@ -22,7 +21,7 @@ if ( isset($_POST['btn-login']) ) {
 
   $sql="INSERT INTO $tbl_name(name, password, email, address, city, state, zip) VALUES ('$name', '$password', '$email', '$address', '$city', '$state', '$zip');";// Insert into database
 
-  $con->query($sql);
+  $con->query($sql) or die(mysql_error($con));
   if ($con) {
     header("Location: index.php");
   }
