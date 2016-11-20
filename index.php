@@ -18,7 +18,7 @@ require 'login.php';
 
 <body>
 
-<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
+<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
   <div class="box">
     <h1>Login</h1>
 
