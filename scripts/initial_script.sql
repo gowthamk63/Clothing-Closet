@@ -1,0 +1,12 @@
+create schema clothingCloset;
+use clothingCloset;
+create table person(id int(20) primary key, name varchar(20) not null, email varchar(20) not null, address varchar(40), city varchar(20), state varchar(2), zip varchar(6), phone varchar(10));
+create table donator(id int(20), foreign key(id) references person(id),  connect varchar(20));
+create table admin (id int(20), foreign key (id) references person(id), pblposition varchar(20));
+create table buyer (id int(20), foreign key (id) references person(id), newsletter varchar(1));
+create table role (id int(1) primary key, personid int(20), foreign key (personid) references person(id));
+create table login(id varchar(20) primary key, password varchar(20), personid int(20), foreign key (personid) references person(id));
+create table item(id int(20) primary key, cond varchar(20), category varchar(1), dateOfAcquiring date not null, price double not null, color varchar(20) not null, posteddate date not null, brand varchar(20) not null, reduction boolean default 0, value double not null);
+create table purchase_history (personid int(20), foreign key (personid) references person(id), itemid int(20), foreign key (itemid) references item(id), billid int(20) not null, purchaseDate date not null);
+create table donation_history(personid int(20), foreign key(personid) references person(id), itemid int(20), foreign key (itemid) references item(id), donationdate date not null, valuedAt double);
+create table donation(personid int(20), foreign key (personid) references person(id), amountdonated double not null, id int primary key);

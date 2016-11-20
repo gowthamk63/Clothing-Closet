@@ -1,9 +1,10 @@
 <?php
-$host="localhost"; 
-$username="root";
-$password="gowthamk997";
-$db_name="clothingCloset";
+include 'util/loadConfiguration.php';
+$host = $config ['database'] ['host'];
+$username = $config ['database'] ['user'];
+$password = $config ['database'] ['password'];
+$db_name = $config ['database'] ['dbname'];
 
 // Connect to server and select databse.
-$con=new mysqli("$host", "$username", "$password","$db_name");
- ?>
+$con = new mysqli ( "$host", "$username", "$password", "$db_name" );
+?>
