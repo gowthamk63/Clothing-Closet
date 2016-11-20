@@ -7,7 +7,7 @@
  }
  //header("Location: home.php")
 
-  require 'connect.php';
+  require 'util/connect.php';
 
   $tbl_name="person"; // Table name
 

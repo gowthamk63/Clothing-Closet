@@ -1,5 +1,5 @@
 <?php
-include 'util/loadConfiguration.php';
+include 'loadConfiguration.php';
 $host = $config ['database'] ['host'];
 $username = $config ['database'] ['user'];
 $password = $config ['database'] ['password'];
