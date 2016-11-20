@@ -2,7 +2,6 @@
 
  session_start();
  if( isset($_SESSION['user'])!="" ){
-   echo "string";
   header("Location: home.php");
  }
 
