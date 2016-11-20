@@ -1,7 +1,6 @@
 <?php
 if ( isset($_POST['btn-login']) ) {
     require 'util/connect.php';
-
     $tbl_name="person"; // Table name
 
     //  and password sent from form
