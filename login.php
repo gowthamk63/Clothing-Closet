@@ -1,6 +1,6 @@
 <?php
 if ( isset($_POST['btn-login']) ) {
-    require 'connect.php';
+    require 'util/connect.php';
 
     $tbl_name="person"; // Table name
 
