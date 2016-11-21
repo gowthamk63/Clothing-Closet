@@ -7,7 +7,9 @@
 if ( isset($_POST['btn-signup']) ) {
   require 'util/connect.php';
 
-  $tbl_name="person"; // Table name
+  //tables for saving user details
+  $tbl_1="person";
+  $tbl_2="login";
 
   //user details
   $name=$_POST['name'];
@@ -19,9 +21,15 @@ if ( isset($_POST['btn-signup']) ) {
   $zip=$_POST['zip'];
   $phone=$_POST['phone'];
 
-  $sql="INSERT INTO $tbl_name(name, password, email, address, city, state, zip) VALUES ('$name', '$password', '$email', '$address', '$city', '$state', '$zip');";// Insert into database
+  // Insert into database
+  $sql_1="INSERT INTO $tbl_1(name, email, address, city, state, zip, phone) VALUES ('$name', '$email', '$address', '$city', '$state', '$zip','$phone');";
+  $con->query($sql_1) or die();
 
-  $con->query($sql) or die(mysql_error($con));
+  $sql_2="INSERT INTO $tbl_2(email,password,personid) VALUES ('$email','$password',$con->insert_id);";
+  $con->query($sql_2) or die();
+  echo "string";
+
+  //verifying insertion and redirecting to login page
   if ($con) {
     header("Location: index.php");
   }

@@ -32,6 +32,9 @@ include 'signup.php'; ?>
 			<input id="zip" type="text" name="zip" pattern="[0-9]{5}" placeholder="Enter zipcode" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" required />
 			<label  for="zip" style="color:red;">*</label>
 
+			<input id="state" type="text" name="state" placeholder="Enter State" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" required />
+			<label  for="state" style="color:red;">*</label>
+
 			<input id="phone" type="text" name="phone" placeholder="Enter phone number" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" required />
 			<label  for="email" style="color:red;">*</label>
 
@@ -43,11 +46,6 @@ include 'signup.php'; ?>
 
 			<input id="cpassword" type="password" name="cpassword" placeholder="Confirm password" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" required />
 			<label  for="cpassword" style="color:red;">*</label><br>
-
-			<input type="radio" name="admin" value="admin" />Admin
-	 		<input type="radio" name="admin" value="user" checked/>Donator
-	 		<input type="radio" name="admin" value="buyer"/> Buyer
-	 		<label for="admin" style="color:red">*</label><br><br>
 
 			<input class="signup" type="submit" value="Sign Up" name="btn-signup" id="submit">
 
