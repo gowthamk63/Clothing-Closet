@@ -56,7 +56,7 @@ if (isset ( $_POST ['submit'] )) {
 		console_log('data initialized...');
 		include '../util/connect.php';		
 		$item = new item($condition, $category, $price, $color, $brand);
-		$query = "INSERT INTO item (condition, category, price, color, brand ) " . "VALUES ('$condition', '$category', $price,'$color','$brand');";
+		$query = "INSERT INTO item (cond, category, price, color, brand ) " . "VALUES ('$condition', '$category', $price,'$color','$brand');";
 		console_log ( $query );
 		// mysqli_query ( $con, $query ) or die ('SQL ERROR');
 		if (! $con->query ( $query )) {
@@ -73,7 +73,7 @@ if (isset ( $_POST ['submit'] )) {
 			// console_log ( move_uploaded_file ( $_FILES ["itemPhoto"] ["tmp_name"], $target_file ) );
 			if (move_uploaded_file ( $_FILES ["itemPhoto"] ["tmp_name"], $target_file )) {
 				echo "The file " . basename ( $_FILES ["itemPhoto"] ["name"] ) . " has been uploaded.";
-				header('Location:home.php');
+				header('Location:../home.php');
 			} else {
 				echo "Sorry, there was an error uploading your file.";
 			}

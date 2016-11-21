@@ -1,0 +1,1 @@
+alter table item change `condition` `cond` varchar(1) not null;
