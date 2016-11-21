@@ -56,7 +56,7 @@ if (isset ( $_POST ['submit'] )) {
 		console_log('data initialized...');
 		include '../util/connect.php';		
 		$item = new item($condition, $category, $price, $color, $brand);
-		$query = "INSERT INTO item (condition, category, price, color, brand ) " . "VALUES ('$condition', '$category', $price,'$color','$brand');";
+		$query = "INSERT INTO item (cond, category, price, color, brand ) " . "VALUES ('$condition', '$category', $price,'$color','$brand');";
 		console_log ( $query );
 		// mysqli_query ( $con, $query ) or die ('SQL ERROR');
 		if (! $con->query ( $query )) {
