@@ -1,5 +1,12 @@
+use clothingCloset;
 alter table person modify email varchar(40) not null;
 alter table admin modify id int(20) primary key auto_increment;
 alter table admin add constraint foreign key (id) references person (id);
 alter table item modify dateOfAcquiring timestamp not null default current_timestamp;
 alter table item modify posteddate date null ;
+alter table buyer modify id int(20) primary key;
+alter table buyer add constraint foreign key (id) references person(id);
+alter table donator modify id int(20) primary key;
+alter table donator add constraint foreign key (id) references person(id);
+alter table login modify personid int(20) not null;
+alter table login add constraint foreign key (personid) references person(id);
