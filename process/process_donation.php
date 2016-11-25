@@ -1,13 +1,15 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-ini_set("log_errors", 1);
-ini_set("error_log", "/tmp/php-error.log");
+require '../session.php';
+
+error_reporting ( E_ALL );
+ini_set ( 'display_errors', 1 );
+ini_set ( "log_errors", 1 );
+ini_set ( "error_log", "/tmp/php-error.log" );
 include '../util/console_logger.php';
-console_log('Entered processing...');
-var_dump($_POST);
+console_log ( 'Entered processing...' );
+var_dump ( $_POST );
 if (isset ( $_POST ['submit'] )) {
-	console_log('Past first check...');
+	console_log ( 'Past first check...' );
 	$target_dir = $_SERVER ['DOCUMENT_ROOT'] . "clothingCloset/uploads/";
 	$target_file = $target_dir . basename ( $_FILES ["itemPhoto"] ["name"] );
 	$uploadOk = 1;
@@ -44,42 +46,51 @@ if (isset ( $_POST ['submit'] )) {
 		echo "Sorry, your file was not uploaded.";
 		// if everything is ok, try to upload file
 	} else {
-		console_log('Post date to be initialized...');
+		console_log ( 'Post date to be initialized...' );
 		$condition = $_POST ['condition'];
 		$category = $_POST ['category'];
-		$price = floatval($_POST ['price']);
+		$price = floatval ( $_POST ['price'] );
 		$color = $_POST ['color'];
-		$brand = $_POST['brand'];
-// 		include '../library/config.php';
-// 		include '../library/opendb.php';
+		$brand = $_POST ['brand'];
+		// include '../library/config.php';
+		// include '../library/opendb.php';
 		include '../core/item.php';
-		console_log('data initialized...');
-		include '../util/connect.php';		
-		$item = new item($condition, $category, $price, $color, $brand);
+		console_log ( 'data initialized...' );
+		include '../util/connect.php';
+		$item = new item ( $condition, $category, $price, $color, $brand );
 		$query = "INSERT INTO item (cond, category, price, color, brand ) " . "VALUES ('$condition', '$category', $price,'$color','$brand');";
 		console_log ( $query );
 		// mysqli_query ( $con, $query ) or die ('SQL ERROR');
 		if (! $con->query ( $query )) {
-			var_dump($con);
-			console_log("Query failed..". $con->error);
+			var_dump ( $con );
+			console_log ( "Query failed.." . $con->error );
 			printf ( "error: %s\n", mysqli_error ( $con ) );
 		} else {
-// 			include '../library/closedb.php';
+			// include '../library/closedb.php';
 			$id = $con->insert_id;
-			console_log ( 'Id is' . $id );
-			$target_file = $target_dir . $id . '.jpg';
-			console_log ( 'target_file is ' . $target_file );
-			$_FILES ["itemPhoto"] ["name"] = $target_file;
-			// console_log ( move_uploaded_file ( $_FILES ["itemPhoto"] ["tmp_name"], $target_file ) );
-			if (move_uploaded_file ( $_FILES ["itemPhoto"] ["tmp_name"], $target_file )) {
-				echo "The file " . basename ( $_FILES ["itemPhoto"] ["name"] ) . " has been uploaded.";
-				header('Location:../home.php');
-			} else {
-				echo "Sorry, there was an error uploading your file.";
+			$person_id = $_SESSION ['user'];
+			console_log("User Id is $person_id");
+			console_log("Item Id is $id");
+			$query = "INSERT INTO donation_history (personid, itemid ) values ($person_id, $id);";
+			console_log($query);
+			if (! $con->query ( $query )) {
+				console_log ( 'Item Id is' . $id );
+				$target_file = $target_dir . $id . '.jpg';
+				console_log ( 'target_file is ' . $target_file );
+				$_FILES ["itemPhoto"] ["name"] = $target_file;
+				// console_log ( move_uploaded_file ( $_FILES ["itemPhoto"] ["tmp_name"], $target_file ) );
+				if (move_uploaded_file ( $_FILES ["itemPhoto"] ["tmp_name"], $target_file )) {
+					echo "The file " . basename ( $_FILES ["itemPhoto"] ["name"] ) . " has been uploaded.";
+				//	header ( 'Location:../home.php' );
+				} else {
+					echo "Sorry, there was an error uploading your file.";
+				}
+			}else{
+				var_dump ( $con );
+				console_log ( "Query failed..." . $con->error );
+				printf ( "error: %s\n", mysqli_error ( $con ) );
 			}
 		}
 	}
-	
-
 }
 ?>

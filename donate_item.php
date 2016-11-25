@@ -5,9 +5,10 @@ require 'session.php';
 <html>
 <head></head>
 <body>
+<div>
 	<form action="process/process_donation.php" method="post" enctype="multipart/form-data">
-		<input type="radio" name="condition" value="G" class="condition"
-			id="condition" checked="checked" />Good<br> <input type="radio"
+			<input type="radio" name="condition" value="G" class="condition"
+				id="condition" checked="checked" />Good<br> <input type="radio"
 			name="condition" value="S" class="condition"
 			id="condition" />Satisfactory <br> <input type="radio"
 			name="condition" value="B" class="condition"
@@ -24,6 +25,8 @@ require 'session.php';
 			type="submit" value="Upload Image" name="submit">
 
 	</form>
+	</div>
+	
 	<?php
 	include 'footer.php';
 	?>
