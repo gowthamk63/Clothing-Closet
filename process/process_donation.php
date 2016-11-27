@@ -52,43 +52,34 @@ if (isset ( $_POST ['submit'] )) {
 		$price = floatval ( $_POST ['price'] );
 		$color = $_POST ['color'];
 		$brand = $_POST ['brand'];
-		// include '../library/config.php';
-		// include '../library/opendb.php';
+// 		include '../library/config.php';
+// 		include '../library/opendb.php';
 		include '../core/item.php';
 		console_log ( 'data initialized...' );
 		include '../util/connect.php';
-		$item = new item ( $condition, $category, $price, $color, $brand );
-		$query = "INSERT INTO item (cond, category, price, color, brand ) " . "VALUES ('$condition', '$category', $price,'$color','$brand');";
-		console_log ( $query );
+		$person_id = $_SESSION ['user'];
+		// $query = "INSERT INTO item (cond, category, price, color, brand ) " . "VALUES ('$condition', '$category', $price,'$color','$brand');";
 		// mysqli_query ( $con, $query ) or die ('SQL ERROR');
-		if (! $con->query ( $query )) {
-			var_dump ( $con );
+		$query = "call process_donation($person_id,'$condition', '$category', $price, '$color', '$brand', @item_id);";
+		if (! $con->query( $query )) {
+			console_log($query);
 			console_log ( "Query failed.." . $con->error );
 			printf ( "error: %s\n", mysqli_error ( $con ) );
 		} else {
-			// include '../library/closedb.php';
-			$id = $con->insert_id;
-			$person_id = $_SESSION ['user'];
-			console_log("User Id is $person_id");
-			console_log("Item Id is $id");
-			$query = "INSERT INTO donation_history (personid, itemid ) values ($person_id, $id);";
-			console_log($query);
-			if (! $con->query ( $query )) {
-				console_log ( 'Item Id is' . $id );
-				$target_file = $target_dir . $id . '.jpg';
-				console_log ( 'target_file is ' . $target_file );
-				$_FILES ["itemPhoto"] ["name"] = $target_file;
-				// console_log ( move_uploaded_file ( $_FILES ["itemPhoto"] ["tmp_name"], $target_file ) );
-				if (move_uploaded_file ( $_FILES ["itemPhoto"] ["tmp_name"], $target_file )) {
-					echo "The file " . basename ( $_FILES ["itemPhoto"] ["name"] ) . " has been uploaded.";
-				//	header ( 'Location:../home.php' );
-				} else {
-					echo "Sorry, there was an error uploading your file.";
-				}
-			}else{
-				var_dump ( $con );
-				console_log ( "Query failed..." . $con->error );
-				printf ( "error: %s\n", mysqli_error ( $con ) );
+// 			include '../library/closedb.php';
+			$result_set = $con->query('SELECT @item_id;');
+			$first_row = $result_set->fetch_assoc();
+			console_log($first_row['@item_id']);
+			$id = $first_row['@item_id'];
+			$target_file = $target_dir . $id . '.jpg';
+			console_log ( 'target_file is ' . $target_file );
+			$_FILES ["itemPhoto"] ["name"] = $target_file;
+			// console_log ( move_uploaded_file ( $_FILES ["itemPhoto"] ["tmp_name"], $target_file ) );
+			if (move_uploaded_file ( $_FILES ["itemPhoto"] ["tmp_name"], $target_file )) {
+				echo "The file " . basename ( $_FILES ["itemPhoto"] ["name"] ) . " has been uploaded.";
+				// header ( 'Location:../home.php' );
+			} else {
+				echo "Sorry, there was an error uploading your file.";
 			}
 		}
 	}
