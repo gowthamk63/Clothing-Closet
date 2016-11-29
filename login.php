@@ -2,7 +2,6 @@
 include 'util/console_logger.php';
 if (isset ( $_POST ['btn-login'] )) {
 	require 'util/connect.php';
-	$tbl_name = "login"; // Table name
 
 	// and password sent from form
 	$email = $_POST ['email'];
@@ -14,8 +13,8 @@ if (isset ( $_POST ['btn-login'] )) {
 	// $email = mysqli_real_escape_string($email);
 	// $password = mysqli_real_escape_string($password);
 
-	$sql = "select p.id, p.email, l.password from login l join person p on p.id=l.personid WHERE p.email='$email' and l.password='$password';";
-	
+	$sql = "select p.id, p.email, l.password from login as l join person as p on p.id=l.personid WHERE p.email='$email' and l.password='$password';";
+
 	$result = $con->query ( $sql ) or die ( $con->connect_error );
 	// counting table rows
 	$count = $result->num_rows;
