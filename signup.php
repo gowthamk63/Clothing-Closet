@@ -10,6 +10,7 @@ if ( isset($_POST['btn-signup']) ) {
   //tables for saving user details
   $tbl_1="person";
   $tbl_2="login";
+  $tbl_3="role";
 
   //user details
   $name=$_POST['name'];
@@ -25,9 +26,13 @@ if ( isset($_POST['btn-signup']) ) {
   $sql_1="INSERT INTO $tbl_1(name, email, address, city, state, zip, phone) VALUES ('$name', '$email', '$address', '$city', '$state', '$zip','$phone');";
   $con->query($sql_1) or die();
 
-  $sql_2="INSERT INTO $tbl_2(email,password,personid) VALUES ('$email','$password',$con->insert_id);";
+  $personid=$con->insert_id;
+
+  $sql_2="INSERT INTO $tbl_2(email,password,personid) VALUES ('$email','$password','$personid');";
   $con->query($sql_2) or die();
-  echo "string";
+
+  $sql_3="INSERT INTO $tbl_3(personid) VALUES ('$personid');";
+  $con->query($sql_3) or die();
 
   //verifying insertion and redirecting to login page
   if ($con) {

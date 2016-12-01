@@ -50,7 +50,6 @@ if (isset ( $_POST ['submit'] )) {
 		$condition = $_POST ['condition'];
 		$category = $_POST ['category'];
 		$price = floatval ( $_POST ['price'] );
-		$color = $_POST ['color'];
 		$brand = $_POST ['brand'];
 // 		include '../library/config.php';
 // 		include '../library/opendb.php';
@@ -60,7 +59,7 @@ if (isset ( $_POST ['submit'] )) {
 		$person_id = $_SESSION ['user'];
 		// $query = "INSERT INTO item (cond, category, price, color, brand ) " . "VALUES ('$condition', '$category', $price,'$color','$brand');";
 		// mysqli_query ( $con, $query ) or die ('SQL ERROR');
-		$query = "call process_donation($person_id,'$condition', '$category', $price, '$color', '$brand', @item_id);";
+		$query = "call process_donation($person_id,@item_id,'$condition', '$category', $price, '$brand');";
 		if (! $con->query( $query )) {
 			console_log($query);
 			console_log ( "Query failed.." . $con->error );
@@ -69,15 +68,16 @@ if (isset ( $_POST ['submit'] )) {
 // 			include '../library/closedb.php';
 			$result_set = $con->query('SELECT @item_id;');
 			$first_row = $result_set->fetch_assoc();
-			console_log($first_row['@item_id']);
-			$id = $first_row['@item_id'];
+			console_log('first row'.$first_row['@item_id']);
+			$id = $first_row['$result_set'];
+			echo $id;
+			echo "string";
 			$target_file = $target_dir . $id . '.jpg';
 			console_log ( 'target_file is ' . $target_file );
 			$_FILES ["itemPhoto"] ["name"] = $target_file;
-			// console_log ( move_uploaded_file ( $_FILES ["itemPhoto"] ["tmp_name"], $target_file ) );
 			if (move_uploaded_file ( $_FILES ["itemPhoto"] ["tmp_name"], $target_file )) {
 				echo "The file " . basename ( $_FILES ["itemPhoto"] ["name"] ) . " has been uploaded.";
-				// header ( 'Location:../home.php' );
+				header ( 'Location:../home.php' );
 			} else {
 				echo "Sorry, there was an error uploading your file.";
 			}

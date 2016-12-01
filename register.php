@@ -7,7 +7,7 @@ include 'signup.php'; ?>
 <head>
 	<title>Signup</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="index.css">
 	<script src="signup.js"></script>
 </head>
 <body>
@@ -29,17 +29,14 @@ include 'signup.php'; ?>
 			<input id="city" type="text" name="city" placeholder="Enter city" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" required />
 			<label  for="city" style="color:red;">*</label>
 
-			<input id="zip" type="text" name="zip" pattern="[0-9]{5}" placeholder="Enter zipcode" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" required />
-			<label  for="zip" style="color:red;">*</label>
-
 			<input id="state" type="text" name="state" placeholder="Enter State" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" required />
 			<label  for="state" style="color:red;">*</label>
 
-			<input id="phone" type="text" name="phone" placeholder="Enter phone number" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" required />
-			<label  for="email" style="color:red;">*</label>
+			<input id="zip" type="text" name="zip" pattern="[0-9]{5}" placeholder="Enter zipcode" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" required />
+			<label  for="zip" style="color:red;">*</label>
 
-			<input id="username" type="text" name="username" placeholder="Enter username" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" required />
-			<label  for="username" style="color:red;">*</label>
+			<input id="phone" type="text" name="phone" placeholder="Enter phone number" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" required />
+			<label  for="phone" style="color:red;">*</label>
 
 			<input id="password" type="password" name="password" placeholder="Enter password" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" required />
 			<label  for="password" style="color:red;">*</label>
@@ -51,7 +48,5 @@ include 'signup.php'; ?>
 
 		</div>
 	</form>
-	<?php
-	include 'footer.php'; ?>
 	</body>
 </html>

@@ -1,4 +1,3 @@
-use clothingCloset;
 alter table person modify email varchar(40) not null;
 alter table admin modify id int(20) primary key auto_increment;
 alter table admin add constraint foreign key (id) references person (id);
