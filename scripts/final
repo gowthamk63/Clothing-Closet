@@ -1,0 +1,2 @@
+create table person(id int(20) primary key, name varchar(20) not null, email varchar(20) not null, address varchar(40), city varchar(20), state varchar(2), zip varchar(6), phone varchar(10));
+create table login(email varchar(60) not null,password varchar(20) not null, personid int(20) not null, foreign key (personid) references person(id));

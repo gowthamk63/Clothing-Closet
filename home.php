@@ -1,5 +1,5 @@
 <?php
-require 'session.php';
+  require 'session.php';
 ?>
 
 <!DOCTYPE html>
@@ -7,29 +7,43 @@ require 'session.php';
 <head>
 <meta charset="utf-8">
 <title>Welcome</title>
+<?php
+  include 'header.php';
+  ?>
 </head>
 <body>
-  <?php
-		include 'header.php';
-		?>
-      You are successfully logged in
-      <a href="logout.php">logout</a>
-	<form>
-		<div id="action_bar" class="action_bar">
-			<table>
-				<tr>
-					<td>Administration</td>
-					<td><a href="donate_item.php">Donate Items</a></td>
-					<td>Search Items</td>
-				</tr>
-			</table>
-		</div>
-		<div id="scrollable_list" class="scrollable_list">Scrollable list here</div>
-	</form>
-	<!-- footer -->
-  <?php
-		include 'footer.php';
-		?>
+  	<!-- Navigation Bar -->
+      <?php
+      include 'navbar.php'; ?>
 
+      <!-- Displaying Items -->
+        <?php
+        require 'util/connect.php';
+        $sql="select cond,category,dateOfAcquiring,price,brand from item where status=1";
+        $result = $con->query ( $sql ) or die ( $con->connect_error );
+        $count = $result->num_rows;
+          If ($count > 0) {
+            while ($row = $result->fetch_array ()) {
+        ?>
+        <div class="albums-container container-fluid">
+
+            <!-- Albums -->
+            <div class="row">
+              <div class="col-sm-4 col-lg-2">
+                            <div class="thumbnail">
+                                    <img src="yo.jpg" class="img-responsive" width="300px" height="300px">
+                                </a>
+                                <div class="caption">
+                                    <h2><?php echo $row['brand']?><h2>
+                                    <h4><?php echo $row['price']?></h4>
+                                    <h4><?php echo $row['category']?></h4></div>
+                                </div>
+                            </div>
+                <div class="clearfix visible-lg"></div>
+            </div>
+        <?php
+          }
+          }
+        ?>
   </body>
 </html>

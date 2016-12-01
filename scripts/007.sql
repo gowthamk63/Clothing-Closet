@@ -1,44 +1,45 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `process_donation`(
-					IN PERSON_ID INT(20), 
-                    IN ITEM_ID INT(20), 
-                    IN cond varchar(1), 
-                    IN category varchar(1), 
-                    IN price double, 
-                    IN color varchar(20), 
+delimiter //
+CREATE PROCEDURE `process_donation`(
+										IN PERSON_ID INT(20),
+                    IN ITEM_ID INT(20),
+                    IN cond varchar(1),
+                    IN category varchar(1),
+                    IN price double,
                     brand varchar(20))
 BEGIN
 	DECLARE EXIT HANDLER FOR SQLEXCEPTION ROLLBACK;
-    
+
 	START TRANSACTION;
-			
-    INSERT 
+
+    INSERT
 		INTO item (
-			cond, 
-            category, 
-            price, 
-            color, 
+						cond,
+            category,
+            price,
             brand )
 		VALUES
 			(
             COND,
             CATEGORY,
             PRICE,
-            COLOR,
             BRAND
             );
-	
-    INSERT 
-		INTO DONATION_HISTORY
+
+    INSERT
+		INTO donation_history
         (
         PERSON_ID,
-        ITEM_ID
+        ITEM_ID,
+				valuedAt
         )
         values
         (
         PERSON_ID,
-        ITEM_ID
+        ITEM_ID,
+				PRICE
         );
 	COMMIT;
 
-    
-END
+
+END//
+delimiter ;

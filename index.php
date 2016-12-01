@@ -12,32 +12,25 @@ require 'login.php';
 <head>
   <meta charset="UTF-8">
   <title>Clothing closet</title>
-  <link rel="stylesheet" href="css/style.css">
+  <?php include 'header.php'; ?>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'>
+  <link rel='stylesheet' type='text/css' href='index.css'>
 </head>
 
 <body>
-
 <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
   <div class="box">
     <h1>Login</h1>
 
-    <input type="email" name="email" placeholder="email" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" />
+    <input type="email" required name="email" placeholder="email" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" />
 
-    <input type="password" name="password" placeholder="password" onFocus="field_focus(this, 'password');" onblur="field_blur(this, 'email');" class="email" /><br>
+    <input type="password" required  name="password" placeholder="password" onFocus="field_focus(this, 'password');" onblur="field_blur(this, 'email');" class="email" /><br>
     <input type="submit" name="btn-login" value="Sign In" class="btn">
 
-    <a href="register.php"><input type="button" id="btn2" value="Sign Up"></a> <!-- End Btn2 -->
-  </div> <!-- End Box -->
 
-  <a href="https://www.facebook.com">asdasd</a>
-
-
+      <input type="button" id="btn2" onclick="location.href='register.php'" name="name" value="Signup">
+  </div>
 </form>
-
-<p>Forgot your password? <u style="color:#f1c40f;">Click Here!</u></p>
-<?php
-include 'footer.php';?>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
 <script src="js/index.js"></script>

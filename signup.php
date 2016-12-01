@@ -28,7 +28,7 @@ if ( isset($_POST['btn-signup']) ) {
 
   $personid=$con->insert_id;
 
-  $sql_2="INSERT INTO $tbl_2(password,personid) VALUES ('$password','$personid');";
+  $sql_2="INSERT INTO $tbl_2(email,password,personid) VALUES ('$email','$password','$personid');";
   $con->query($sql_2) or die();
 
   $sql_3="INSERT INTO $tbl_3(personid) VALUES ('$personid');";

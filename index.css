@@ -1,6 +1,6 @@
 body{
   font-family: 'Open Sans', sans-serif;
-  background-image: url("Desktop-Fashion-Wallpaper-HD-1920x1080-4.jpg");
+  background-image: url("images/67697465-shopping-wallpapers.jpg");
   margin: 0 auto 0 auto;
   width:100%;
   text-align:center;
@@ -60,13 +60,13 @@ h1{
 }
 
 .btn{
-  background:#2ecc71;
+  background:#56494b;
   width:125px;
   padding-top:5px;
   padding-bottom:5px;
   color:white;
   border-radius:4px;
-  border: #27ae60 1px solid;
+  border: #000000 1px solid;
 
   margin-top:20px;
   margin-bottom:20px;
@@ -78,11 +78,11 @@ h1{
 
 
 .btn:hover{
-  background:#2CC06B;
+  background:#56494b;
 }
 
 .signup{
-  background:#2ecc71;
+  background:#313131;
   width:140px;
   padding-top:5px;
   padding-bottom:5px;
@@ -97,14 +97,20 @@ h1{
   font-size:0.8em;
 }
 
+.signup:hover{
+  background:#313131;
+  color: #56494b;
+}
+
+
 #btn2{
   float:left;
-  background:#3498db;
+  background:#313131;
   width:125px;  padding-top:5px;
   padding-bottom:5px;
   color:white;
   border-radius:4px;
-  border: #2980b9 1px solid;
+  border: #000000 1px solid;
 
   margin-top:20px;
   margin-bottom:20px;
@@ -114,5 +120,6 @@ h1{
 }
 
 #btn2:hover{
-background:#3594D2;
+background:#313131;
+color: #56494b;
 }

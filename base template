@@ -1,0 +1,21 @@
+<?php
+require 'session.php';
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Profile</title>
+<?php
+  include 'header.php';
+  ?>
+</head>
+<body>
+  	<!-- Navigation Bar -->
+      <?php
+      include 'navbar.php'; ?>
+
+
+  </body>
+</html>
