@@ -31,15 +31,14 @@
             <div class="row">
               <div class="col-sm-4 col-lg-2">
                             <div class="thumbnail">
-                                    <img src="yo.jpg" class="img-responsive" width="300px" height="300px">
-                                </a>
+                                    <img src="uploads/yo.jpg" class="img-responsive" width="300px" height="300px">
                                 <div class="caption">
                                     <h2><?php echo $row['brand']?><h2>
                                     <h4><?php echo $row['price']?></h4>
                                     <h4><?php echo $row['category']?></h4></div>
                                 </div>
                             </div>
-                <div class="clearfix visible-lg"></div>
+                <div class="clearfix visible-md visible-lg"></div>
             </div>
         <?php
           }

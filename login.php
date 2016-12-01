@@ -1,16 +1,16 @@
 <?php
-include 'util/console_logger.php';
 
 if (isset ( $_POST ['btn-login'] )) {
 	require 'util/connect.php';
 
-	// and password sent from form
+	// email and password sent from form
 	$email = $_POST ['email'];
 	$password = $_POST ['password'];
 
 	$sql = "select personid,email,password from login where email='$email' and password='$password';";
 
 	$result = $con->query ( $sql ) or die ( $con->connect_error );
+
 	// counting table rows
 	$count = $result->num_rows;
 	$row = $result->fetch_array ();

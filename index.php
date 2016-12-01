@@ -27,10 +27,13 @@ require 'login.php';
     <input type="password" required  name="password" placeholder="password" onFocus="field_focus(this, 'password');" onblur="field_blur(this, 'email');" class="email" /><br>
     <input type="submit" name="btn-login" value="Sign In" class="btn">
 
+    <input type="button" id="btn2" onclick="location.href='register.php'" name="name" value="Signup">
 
-      <input type="button" id="btn2" onclick="location.href='register.php'" name="name" value="Signup">
+
   </div>
 </form>
+
+<span>forgot your password? <a href="forgotpassword.html" onclick="location.href='forgotpassword.html'">click here</a></span>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
 <script src="js/index.js"></script>

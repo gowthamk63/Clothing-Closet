@@ -1,6 +1,5 @@
 <nav class="navbar navbar-inverse">
         <div class="container-fluid">
-            <!-- Header-->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
                     <span class="icon-bar"></span>
@@ -25,13 +24,6 @@
                       </a>
                   </li>
                 </ul>
-
-                <form class="navbar-form navbar-left" role="search" method="get" action="">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="q" placeholder="Search category">
-                </div>
-                <button type="submit" class="btn btn-default">Search</button>
-                </form>
                 <ul class="nav navbar-nav navbar-right">
                   <?php
                     session_start();
