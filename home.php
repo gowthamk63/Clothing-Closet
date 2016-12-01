@@ -27,7 +27,7 @@
         ?>
         <div class="albums-container container-fluid">
 
-            <!-- Albums -->
+            <!-- Items -->
             <div class="row">
               <div class="col-sm-4 col-lg-2">
                             <div class="thumbnail">
