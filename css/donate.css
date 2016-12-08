@@ -1,0 +1,33 @@
+.box{
+  background: #565555;
+  width: 700px;
+  border-radius: 6px;
+  margin: 0 auto 0 auto;
+  margin-top: -23px;
+  padding: 40px 40px 70px 170px;
+  border: #526069 4px solid;
+  color:#fff;
+}
+
+.price,.brand,.color,.type,.size,.message{
+  color: black;
+}
+
+.upload{
+  background:#313131;
+  width:140px;
+  padding-top:5px;
+  padding-bottom:5px;
+  color:white;
+  border-radius:4px;
+  border: #000000 1px solid;
+  margin-left: 100px;
+  margin-top:20px;
+  margin-bottom:20px;
+  float:left;
+  font-weight:800;
+  font-size:0.8em;
+}
+.upload:hover{
+  color:#56494b;
+}

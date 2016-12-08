@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
@@ -23,8 +23,14 @@
                           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Donate
                       </a>
                   </li>
+                  <li class="">
+                      <a href="cart.php">
+                          <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; Cart
+                      </a>
+                  </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+
                   <?php
                     session_start();
                     require 'util/connect.php';
@@ -44,6 +50,7 @@
                     <?php
                   }
                     ?>
+
                     <li class="">
                         <a href="logout.php">
                             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Logout
@@ -53,3 +60,9 @@
             </div>
         </div>
     </nav>
+
+    <style>
+    body{
+      background-image: url("images/b12.png");
+    }
+    </style>

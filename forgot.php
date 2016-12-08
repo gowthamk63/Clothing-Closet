@@ -1,3 +1,9 @@
+<?php
+	if($_GET['text']){
+		//echo $_GET['text'].' '.'is not registered with this domain';
+		echo "<p style='color:red;font-size:100%;'>".$_GET['text']." "."is not registered with this domain"."</p>";
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>

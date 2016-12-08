@@ -5,11 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="js/display.js"></script>
 <meta charset="utf-8">
-<title>Welcome</title>
+<title>Clothing Closet  </title>
 <?php
   include 'header.php';
   ?>
+  <link rel="stylesheet" href="css/admin.css" media="screen" title="no title">
+  <script src="js/cart.js"></script>
 </head>
 <body>
   	<!-- Navigation Bar -->
@@ -19,30 +22,41 @@
       <!-- Displaying Items -->
         <?php
         require 'util/connect.php';
-        $sql="select cond,category,dateOfAcquiring,price,brand from item where status=1";
+
+        $sql="select item.id,item.cond,item.category,item.dateOfAcquiring,item.price,item.brand from item where item.id not in (select item_id from cart) and item.status=1 and item.sold=0";
         $result = $con->query ( $sql ) or die ( $con->connect_error );
         $count = $result->num_rows;
           If ($count > 0) {
-            while ($row = $result->fetch_array ()) {
         ?>
-        <div class="albums-container container-fluid">
-
+        <div class="container" >
             <!-- Items -->
+
             <div class="row">
-              <div class="col-sm-4 col-lg-2">
+              <?php while ($row = $result->fetch_array ()) {
+                 ?>
+              <div class="col-xs-3 col-lg-2x">
                             <div class="thumbnail">
-                                    <img src="uploads/yo.jpg" class="img-responsive" width="300px" height="300px">
+
+                                    <img src="uploads/<?php echo $row['id']?>.jpg" class="img-responsive">
                                 <div class="caption">
-                                    <h2><?php echo $row['brand']?><h2>
-                                    <h4><?php echo $row['price']?></h4>
-                                    <h4><?php echo $row['category']?></h4></div>
+                                    <h4 style="margin-left:5px;"><?php echo "Brand:"." ".$row['brand']?><h4>
+                                    <h4 style="margin-left:5px;"><?php echo "Price:"." "."$".$row['price']?></h4>
+                                    <h4 style="margin-left:5px;"><?php echo "Category:"." ".$row['category']?></h4>
+                                    <button type="button" class="btn-buy" name="buy" onclick="add(<?php echo $row['id']?>)"><strong>Add to cart</strong></button>
+                                  </div>
                                 </div>
                             </div>
+                            <?php
+                          }
+                          ?>
                 <div class="clearfix visible-md visible-lg"></div>
             </div>
         <?php
+        $p = "uploads/".$row['id'].".jpg";
+        $i=$row['id'];
           }
-          }
-        ?>
+
+          ?>
+
   </body>
 </html>

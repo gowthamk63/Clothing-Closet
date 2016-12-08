@@ -33,7 +33,7 @@ require 'login.php';
   </div>
 </form>
 
-<span>forgot your password? <a href="forgotpassword.html" onclick="location.href='forgotpassword.html'">click here</a></span>
+<span>forgot your password? <a href="forgotpassword.html" onclick="location.href='forgot.php'">click here</a></span>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
 <script src="js/index.js"></script>

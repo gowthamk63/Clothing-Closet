@@ -15,7 +15,9 @@ require 'session.php';
   	<!-- Navigation Bar -->
       <?php
       include 'navbar.php'; ?>
-
-
+<style>{
+  background-image: "images/back.jpg"
+}
+</style>
   </body>
 </html>

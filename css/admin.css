@@ -1,0 +1,74 @@
+.form-promote{
+  margin-bottom: 20px;
+}
+
+.btn-approve{
+  background-color: #4CAF50;
+  border-radius: 7px;
+  border-color: #4CAF50;
+  color: white;
+  padding: 4px 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 2px;
+}
+.btn-reject{
+  background-color: #d20000;
+  border-radius: 7px;
+  border-color: #d20000;
+  color: white;
+  padding: 4px 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.btn-edit{
+  background-color: #ffffff;
+  border-radius: 7px;
+  border-color: #000000;
+  color: black;
+  padding: 1px 1px;
+  text-decoration: none;
+  display: inline;
+}
+
+.btn-done{
+  background-color: #ffffff;
+  border-radius: 7px;
+  border-color: #000000;
+  color: black;
+  padding: 1px 1px;
+  text-align: center;
+  text-decoration: none;
+  display: inline;
+  margin-left: 5px;
+
+}
+
+.btn-buy{
+  width: 120px;
+  border-radius: 7px;
+  border-color: black;
+  color: black;
+  padding: 4px 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.thumbnail>img{
+  width: 160px;
+  height: 230px;
+}
+
+.thumbnail{
+  background-color: #afaeae;
+}
+
+
+.caption{
+  text-align: center;
+}

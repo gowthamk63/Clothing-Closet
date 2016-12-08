@@ -6,12 +6,9 @@
 //This should be done in your php.ini, but this is how to do it if you don't have access to that
 
 
+$id=$_GET['person_id'];
 require 'util/connect.php';
-
-$email=$_POST['email'];
-
-$sql = "select password from login where email='$email';";
-
+$sql = "select email from person where id='$id';";
 $result = $con->query ( $sql ) or die ( $con->connect_error );
 // counting table rows
 $count = $result->num_rows;
@@ -19,7 +16,7 @@ $row = $result->fetch_array ();
 
 // If result matched $email and $password, table row must be 1 row
 if ($count == 1 ) {
-    $password=$row ['password'] ;
+    $email = $row ['email'] ;
   require 'util/PHPMailer/PHPMailerAutoload.php';
 
   //Create a new PHPMailer instance
@@ -51,25 +48,26 @@ if ($count == 1 ) {
   $mail->Password = "a1a2a3a4a5a6a7";
   //Set who the message is to be sent from
   //Set who the message is to be sent to
-  $mail->addAddress($email);
+  $mail->addAddress("syeturu1@uncc.edu");
   //Set the subject line
-  $mail->Subject = 'Your password';
+  $mail->Subject = 'Your Tax Document';
   //Read an HTML message body from an external file, convert referenced images to embedded,
   //convert HTML into a basic plain-text alternative body
 
-  $mail->msgHTML($password);
+  $mail->msgHTML("Tax document is attached with this mail");
   //Replace the plain text body with one created manually
   $mail->AltBody = 'This is a plain-text message body';
   //Attach an image file
+  //$mail->addAtachment("images/TaxDocument.jpg");
   if (!$mail->send()) {
       echo "Mailer Error: " . $mail->ErrorInfo;
-  } else {  
-  header("Location: index.php");
+  } else {
+  header("Location: home.php");
   }
 } else {
-  // echo "Email address not registered with this domain";
-  header("Location:forgot.php?text=".$email);
+  echo "Email address not registered with this domain";
   ?>
+  <a href="home.php">Go Back</a>
   <?php
  }
 
