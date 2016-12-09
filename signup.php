@@ -1,5 +1,7 @@
  <?php
- session_start();
+ if (!isset($_SESSION)) {
+  session_start();
+}
  if( isset($_SESSION['user'])!="" ){
   header("Location: home.php");
  }
@@ -10,7 +12,7 @@ if ( isset($_POST['btn-signup']) ) {
   //tables for saving user details
   $tbl_1="person";
   $tbl_2="login";
-  $tbl_3="role";
+  $tbl_3="customer";
 
   //user details
   $name=$_POST['name'];
@@ -31,9 +33,9 @@ if ( isset($_POST['btn-signup']) ) {
   $sql_2="INSERT INTO $tbl_2(email,password,personid) VALUES ('$email','$password','$personid');";
   $con->query($sql_2) or die();
 
-  $sql_3="INSERT INTO $tbl_3(personid) VALUES ('$personid');";
-  $con->query($sql_3) or die();
-
+    $sql_3="INSERT INTO $tbl_3(id) VALUES ('$personid');";
+    $con->query($sql_3) or die();
+  
   //verifying insertion and redirecting to login page
   if ($con) {
     header("Location: index.php");

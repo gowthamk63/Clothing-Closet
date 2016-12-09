@@ -10,7 +10,7 @@ require 'session.php';
 <?php
   include 'header.php';
   ?>
-  <link rel="stylesheet" href="css/donate.css" media="screen" title="no title">
+<link rel="stylesheet" href="css/donate.css" media="screen" title="no title">
 </head>
 
 <body>
@@ -20,44 +20,49 @@ require 'session.php';
 
       <!-- Donation Form -->
 			<div class="box">
-				<form action="process/process_donation.php" method="post" enctype="multipart/form-data">
+				<form class="form-horizontal" action="process/process_donation.php" method="post" enctype="multipart/form-data">
 
-						<div class="row">
+						<div class="form-group">
               <label for="condition">Condition:</label>
-                      <span>
+                      <!-- <span> -->
                       <input type="radio" name="condition" value="Good" class="condition" id="condition" required/>Good
 						          <input type="radio" name="condition" value="Satisfactory" class="condition" id="condition" required/>Satisfactory
 						          <input type="radio" name="condition" value="B" class="condition" id="condition" />Needs Mending
-                    </span><br><br>
+                      <!-- <div class="col-sm-10"> -->
+                    <!-- </span><br><br> -->
             </div>
 
-            <div class="row">
+            <div class="form-group">
               <label for="category">Category:</label>
               <input type="radio" name="category" value="Male" class="category" id="category" required/>Male
-						  <input type="radio" name="category" value="Female" class="category" id="category" /> Female<br><br>
+						  <input type="radio" name="category" value="Female" class="category" id="category" /> Female
+              <!-- <div class="col-sm-10"> -->
             </div>
 
-            <div class="row">
+            <div class="form-group">
 						  <label for="price">Price:</label>
-               <input type="text" name="price" placeholder="Enter price for the item" id="price" class="price" required/><br><br>
+               <input type="text" name="price" placeholder="Enter price for the item" id="price" class="price" required/>
+               <!-- <div class="col-sm-10"> -->
             </div>
 
-            <div class="row">
+            <div class="form-group">
               <label for="brand">Brand:</label>
-               <input type="text" name="brand" placeholder="Brand" id="brand" class="brand" required/> <br><br>
+               <input type="text" name="brand" placeholder="Brand" id="brand" class="brand" required/>
+               <!-- <div class="col-sm-10"> -->
             </div>
 
-            <div class="row">
+            <div class="form-group">
               <label for="color">Color:</label>
-               <input type="text" name="color" placeholder="Color" id="color" class="color" required><br><br>
+               <input type="text" name="color" placeholder="Color" id="color" class="color" required>
+               <!-- <div class="col-sm-10"> -->
             </div>
 
-            <div class="row">
+            <div class="form-group">
               <label for="type">Type:</label>
               <input type="text" name="type" placeholder="Type" id="type" class="type" required><br><br>
             </div>
 
-            <div class="row">
+            <div class="form-group">
               <label for="size">Select Size:</label>
 		          <select name="size" id="size" class="size" required>
 		              <option value="Small">Small</option>
@@ -67,7 +72,7 @@ require 'session.php';
 		          </select>
 		        </div>
 
-          	<div class="row">
+          	<div class="form-group">
           		<label for="message">Description:</label><br />
           		<textarea id="message" name="message" rows="7" cols="50" class="message"></textarea><br />
           	</div>

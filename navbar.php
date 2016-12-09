@@ -32,7 +32,9 @@
                 <ul class="nav navbar-nav navbar-right">
 
                   <?php
-                    session_start();
+                    if (!isset($_SESSION)) {
+  session_start();
+}
                     require 'util/connect.php';
                     $id = (int)$_SESSION['user'];
                     $sql="select * from admin where id=$id;";
@@ -60,9 +62,3 @@
             </div>
         </div>
     </nav>
-
-    <style>
-    body{
-      background-image: url("images/b12.png");
-    }
-    </style>

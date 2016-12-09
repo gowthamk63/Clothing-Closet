@@ -34,15 +34,15 @@
             <div class="row">
               <?php while ($row = $result->fetch_array ()) {
                  ?>
-              <div class="col-xs-3 col-lg-2x">
+              <div class="col-xs-3 col-lg-2x productCard">
                             <div class="thumbnail">
 
                                     <img src="uploads/<?php echo $row['id']?>.jpg" class="img-responsive">
                                 <div class="caption">
-                                    <h4 style="margin-left:5px;"><?php echo "Brand:"." ".$row['brand']?><h4>
-                                    <h4 style="margin-left:5px;"><?php echo "Price:"." "."$".$row['price']?></h4>
-                                    <h4 style="margin-left:5px;"><?php echo "Category:"." ".$row['category']?></h4>
-                                    <button type="button" class="btn-buy" name="buy" onclick="add(<?php echo $row['id']?>)"><strong>Add to cart</strong></button>
+                                    <h4 class="ditch" style="margin-left:5px;"><?php echo "Brand:"." ".$row['brand']?><h4>
+                                    <h4 class="ditch" style="margin-left:5px;"><?php echo "Price:"." "."$".$row['price']?></h4>
+                                    <h4 class="ditch" style="margin-left:5px;"><?php echo "Category:"." ".$row['category']?></h4>
+                                    <button type="button" class="btn-buy" name="buy" onclick="add(<?php echo $row['id']?>)">Add to cart</button>
                                   </div>
                                 </div>
                             </div>

@@ -18,7 +18,7 @@ require 'session.php';
 
 
       <!-- Displaying Purchase History -->
-      <table border="2" width="350px" style="margin-left:20px;">
+      <table border="0" width="400px" style="float: left; margin-left: 10%">
         <thead>
           <tr>
             <th>Item</th>
@@ -29,25 +29,38 @@ require 'session.php';
       <tbody>
         <?php
         require 'util/connect.php';
-        $sql="select purchaseDate,billid from purchase_history where 1";
+        $person_id=$_SESSION ['user'];
+        $sql="select itemid,purchaseDate,billid from purchase_history where personid='$person_id'";
         $result = $con->query ( $sql ) or die ( $con->connect_error );
         $count = $result->num_rows;
           If ($count > 0) {
             while ($row = $result->fetch_array ()) {
         ?>
         <tr>
-             <td><?php echo $row['purchaseDate']; ?></td>
-             <td width="120px"><?php echo $row['billid']; ?></td>
+          <?php
+
+             $x=$row['purchaseDate'];
+             $bill_id=$row['billid'];
+             $itemid=$row['itemid'];
+             $sql = "select price from item where id='$itemid';";
+             $result1 = $con->query ( $sql ) or die ( $con->connect_error );
+             $count1 = $result1->num_rows;
+             $row1 = $result1->fetch_array ();
+           ?>
+             <td>
+                
+               <img src="uploads/<?php echo $itemid;?>.jpg" class="img-responsive" width="30px" height="30px">
+             </td>
+             <td><?php echo $x;?></td>
+             <td width="50px"><?php echo $bill_id?></td>
         </tr>
-      </tbody>
-      </table>
         <?php
           }
           }
         ?>
 
       <!-- Displaying Donation History -->
-      <table border="2" width="350px" style="margin-top:50px;margin-left:20px;">
+      <table border="0" width="400px" style="margin-right:10%; float: right;">
         <thead>
           <tr>
             <th> Item </th>
@@ -58,7 +71,7 @@ require 'session.php';
       <tbody>
         <?php
         require 'util/connect.php';
-        $sql="select itemid,donationdate,valuedAt from donation_history where 1";
+        $sql="select itemid,donationdate,valuedAt from donation_history where personid=$person_id";
         $result = $con->query ( $sql ) or die ( $con->connect_error );
         $count = $result->num_rows;
           If ($count > 0) {
